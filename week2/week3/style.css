@@ -1,4 +1,8 @@
-h1,
+section {
+  text-align: center;
+  border: 1px solid red;
+}
+
 h3 {
   color: lime;
 }
@@ -9,8 +13,22 @@ h3 {
 
 body {
   background-color: beige;
+  font-size: 1.2rem;
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+h1 {
+  color: lime;
+  font-size: 3rem;
+  text-align: center;
+  text-transform: uppercase;
 }
 
+h1 {
+  color: red;
+}
 /* {
   color: hotpink;
 }

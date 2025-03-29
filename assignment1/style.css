@@ -1,0 +1,40 @@
+body {
+  font: size 1.1rem;
+  text-align: center;
+  margin: 0 auto;
+}
+h1 {
+  font-weight: bold;
+  font-size: 1.6rem;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+p {
+  border: 1px solid red;
+  width: 700px;
+  min-height: 150px;
+  margin: auto;
+  padding-left: 20px;
+  padding-top: 40px;
+  padding-right: 30px;
+  padding-bottom: 40px;
+  margin-bottom: 20px;
+  border-bottom: 2px dashed green;
+  background-color: white;
+}
+
+body {
+  background-color: rgb(242, 166, 178);
+  font-size: 1.2rem;
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: weight>;
+  font-style: normal;
+}
+.small-img {
+  max-width: 50%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+}

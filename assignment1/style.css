@@ -29,10 +29,17 @@ body {
   font-size: 1.2rem;
   font-family: "Playfair Display", serif;
   font-optical-sizing: auto;
-  font-weight: weight>;
+  font-weight: weight;
   font-style: normal;
 }
 .small-img {
+  max-width: 50%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+}
+
+.red-img {
   max-width: 50%;
   height: auto;
   display: block;

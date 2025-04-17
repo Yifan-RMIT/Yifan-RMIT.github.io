@@ -1,0 +1,81 @@
+/* ✅ 设置全局字体和背景 */
+body {
+  font-family: "Open Sans", sans-serif;
+  background: linear-gradient(to right, #e0f7fa, #e0f2f1);
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* ✅ 导航栏样式 */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  background-color: #00695c;
+  padding: 10px 0;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ✅ 媒体播放器样式 */
+.media-player {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #ffffffcc;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-controls {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.custom-controls button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+#volume-slider {
+  width: 100px;
+  margin-right: 10px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#progress-bar-fill {
+  display: block;
+  height: 100%;
+  background-color: #00695c;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+/* ✅ 页脚样式 */
+footer {
+  background-color: #004d40;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 40px;
+}

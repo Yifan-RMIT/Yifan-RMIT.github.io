@@ -11,6 +11,7 @@ The player as a whole is centred, with a white background, rounded corners and s
 
 /* Set global colour and spacing variables, then use var() later to change the style uniformly */
 
+/* set color and spacing variable for global, later can use var() to change style in one go */
 :root {
   --primary-color: #ff7f50;
   --secondary-color: #4ecdc4;
@@ -24,7 +25,8 @@ The player as a whole is centred, with a white background, rounded corners and s
   --spacing-lg: 24px;
 }
 
-/* Set web fonts, background colours, text colours, remove default margins */
+/* set page font, background, text color, remove default margin padding */
+
 body {
   font-family: "Open Sans", sans-serif;
   background-color: var(--background-color);
@@ -32,6 +34,8 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* the player main box, white background, round corner, shadow, center layout, top color bar */
 
 .player-container {
   background-color: white;
@@ -44,6 +48,7 @@ body {
   border-top: 5px solid var(--primary-color);
 }
 
+/* title of the player, center, with color and bottom line */
 .player-title {
   font-family: "Montserrat", sans-serif;
   text-align: center;
@@ -54,6 +59,8 @@ body {
   font-weight: 600;
 }
 
+/* video area box, black background, round border, auto fit */
+
 .media-wrapper {
   width: 100%;
   margin: 0 auto var(--spacing-md);
@@ -61,11 +68,14 @@ body {
   border-radius: 4px;
   overflow: hidden;
 }
+/* real video tag, make it 100% width and no blank */
 
 #media-element {
   width: 100%;
   display: block;
 }
+
+/* control bar of player, row layout, center, white background, with small shadow */
 
 .custom-controls {
   display: flex;
@@ -79,6 +89,8 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
+
+/* play/pause button style, round, color bg, icon center, hover a bit zoom */
 
 .control-btn {
   background-color: var(--primary-color);
@@ -94,16 +106,20 @@ body {
   transition: all 0.3s;
 }
 
+/* when mouse hover, button color change and a bit big */
+
 .control-btn:hover {
   background-color: var(--secondary-color);
   transform: scale(1.05);
 }
 
+/* icon size setup */
 .icon {
   width: 24px;
   height: 24px;
 }
 
+/* outer box for progress bar and time */
 .progress-container {
   flex: 1;
   display: flex;
@@ -111,6 +127,8 @@ body {
   gap: var(--spacing-sm);
   min-width: 100px;
 }
+
+/* background bar for progress, can click, round corner */
 
 .progress-bar {
   height: 8px;
@@ -121,6 +139,8 @@ body {
   cursor: pointer;
 }
 
+/* fill bar color part, change when playing */
+
 #progress-fill {
   background-color: var(--primary-color);
   height: 100%;
@@ -130,11 +150,15 @@ body {
   top: 0;
 }
 
+/* time text like 0:00 / 3:15 */
+
 #time-display {
   font-size: 12px;
   color: var(--control-color);
   text-align: center;
 }
+
+/* volume area, put icon and slider horizontal */
 
 .volume-control {
   display: flex;
@@ -142,9 +166,13 @@ body {
   gap: var(--spacing-sm);
 }
 
+/* slider width */
+
 #volume-slider {
   width: 80px;
 }
+
+/* speed control box, white bg, shadow */
 
 .speed-control {
   margin: var(--spacing-lg) auto;
@@ -156,6 +184,8 @@ body {
   text-align: center;
 }
 
+/* "Adjust Tutorial Speed" title style */
+
 .speed-control h3 {
   font-family: "Montserrat", sans-serif;
   margin-bottom: var(--spacing-sm);
@@ -163,6 +193,7 @@ body {
   font-weight: 600;
   text-align: center;
 }
+/* that description under title */
 
 .feature-description {
   color: var(--control-color);
@@ -170,6 +201,7 @@ body {
   margin-bottom: var(--spacing-md);
   text-align: center;
 }
+/* outer for those speed buttons, center and wrap */
 
 .speed-buttons {
   display: flex;
@@ -178,6 +210,7 @@ body {
   gap: var(--spacing-md);
   margin: 0 auto var(--spacing-md);
 }
+/* one button of speed, bg color, white text, round, with animation */
 
 .speed-btn {
   padding: var(--spacing-sm) var(--spacing-md);
@@ -192,14 +225,19 @@ body {
   text-align: center;
 }
 
+/* hover change color */
+
 .speed-btn:hover {
   background-color: var(--secondary-color);
 }
+/* when selected, use different color and add shadow */
 
 .speed-btn.active {
   background-color: var(--secondary-color);
   box-shadow: 0 0 8px rgba(78, 205, 196, 0.6);
 }
+
+/* display the current speed style */
 
 .current-speed {
   text-align: center;
@@ -207,9 +245,12 @@ body {
   color: var(--text-color);
 }
 
+/* color of the number */
+
 #speed-display {
   color: var(--primary-color);
 }
+/* info section for tutorial intro */
 
 .tutorial-info {
   margin: var(--spacing-lg) auto;
@@ -220,6 +261,7 @@ body {
   width: 100%;
   text-align: center;
 }
+/* intro title style */
 
 .tutorial-info h3 {
   font-family: "Montserrat", sans-serif;
@@ -229,10 +271,13 @@ body {
   text-align: center;
 }
 
+/* intro text content style */
+
 .tutorial-info p {
   text-align: center;
   line-height: 1.5;
 }
+/* bottom footer style, text a bit light, center align */
 
 .page-footer {
   margin: var(--spacing-lg) auto;
@@ -242,10 +287,13 @@ body {
   padding: var(--spacing-sm);
 }
 
+/* link inside footer */
+
 .page-footer a {
   color: var(--primary-color);
   text-decoration: none;
 }
+/* when on tablet, adjust layout a bit to make it tighter */
 
 @media (max-width: 768px) {
   .player-container {
@@ -266,6 +314,7 @@ body {
     height: 20px;
   }
 }
+/* for phone size, remove round and shadow, make it touch edge */
 
 @media (max-width: 480px) {
   .player-container {

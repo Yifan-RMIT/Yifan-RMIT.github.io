@@ -1,21 +1,16 @@
-/**
- * WHAT: Crafting Tutorial Media Player JavaScript
- * WHY: Creates interactive functionality for tutorial playback
- * HOW: Using event listeners and DOM manipulation
- * CITATION: Core event handling based on week5, week6, and week7 files
- */
+// This page of JavaScript scripts is for a website that has some interactive effects,
+// the kind where you can tap buttons to play, pause, mute, adjust the sound, and change the speed.
+// I took some of the things from the web page and added reactions to them, like clicking on them to start the playback,
+// or to turn the sound off. Also added a progress bar so you can see where the video has gone, or you can tap the bar to jump around.
+// The main reason for doing this was to use code to control the content on the page so that it could move and be manipulated.
 
-// Wait for DOM to fully load
 document.addEventListener("DOMContentLoaded", function () {
   // Log that script has loaded
   console.log("Script loaded");
 
-  /**
-   * WHAT: Get DOM element references
-   * WHY: Store elements we'll interact with
-   * HOW: Using getElementById and querySelector methods
-   * CITATION: Based on week5/weather/script.js lines 1-3
-   */
+  // Get the elements of the page (the ones we want to manipulate)
+  // Save the ones we want to move first, like buttons and stuff.
+
   const mediaElement = document.getElementById("media-element");
   const playButton = document.getElementById("play-button");
   const pauseButton = document.getElementById("pause-button");
@@ -27,12 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const speedButtons = document.querySelectorAll(".speed-btn");
   const speedDisplay = document.getElementById("speed-display");
 
-  /**
-   * WHAT: Define icon paths for different states
-   * WHY: Makes it easy to update icons when state changes
-   * HOW: Using object literal with descriptive keys
-   * CITATION: Icons from Icons8 as specified in the assignment
-   */
+  // Define the paths of the icons to be used in different states, e.g. the icon for play is not the same as the one for pause
+  // so that when the state changes (e.g. play to pause) I can just change the icon without having to look for the image again each time.
+
   const iconPaths = {
     play: "assets/icons/play.png",
     pause: "assets/icons/pause.png",
@@ -47,24 +39,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initialize player state
   let isPlaying = false;
 
-  /**
-   * WHAT: Format seconds to MM:SS
-   * WHY: Creates readable time display
-   * HOW: Math operations for minutes and seconds
-   * CITATION: Math operations from week5/script.js
-   */
+  // Format the number of seconds into minutes plus seconds format, like 05:30, this is a good look,
+  //  otherwise the original is 123 seconds of such numbers, look too unintuitive, with this function becomes clear
+
   function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = Math.floor(seconds % 60);
     return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
   }
 
-  /**
-   * WHAT: Update progress bar
-   * WHY: Shows playback progress
-   * HOW: Calculate percentage played
-   * CITATION: DOM updates from week5/weather/script.js
-   */
+  // Update the progress of the progress bar so that you can see exactly where the progress line is at the end of the video.
   function updateProgressBar() {
     if (mediaElement.duration) {
       const percentage =
@@ -78,12 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  /**
-   * WHAT: Play media function
-   * WHY: Starts video playback
-   * HOW: Using HTML5 video API
-   * CITATION: From week7/videoscript.js lines 11-14
-   */
+  // Play video function, press the button will start the video, it is used to start the playback.
   function playMedia() {
     console.log("Play button clicked");
     mediaElement
@@ -99,12 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  /**
-   * WHAT: Pause media function
-   * WHY: Pauses video playback
-   * HOW: Using HTML5 video API
-   * CITATION: From week7/videoscript.js lines 24-27
-   */
+  // This is a function to pause the video. Pressing it stops the video, and is used to interrupt playback.
   function pauseMedia() {
     console.log("Pause button clicked");
     mediaElement.pause();
@@ -117,8 +91,8 @@ document.addEventListener("DOMContentLoaded", function () {
   /**
    * WHAT: Toggle mute function
    * WHY: Mutes/unmutes audio
-   * HOW: Toggling muted property
-   * CITATION: Event handling from week6/week6/blog.post/script.js
+
+
    */
   function toggleMute() {
     console.log("Mute button clicked");
@@ -130,12 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Mute toggled:", mediaElement.muted);
   }
 
-  /**
-   * WHAT: Update volume icon based on current volume state
-   * WHY: Provides visual feedback on volume level
-   * HOW: Changes image source based on volume state
-   * CITATION: Using Icons8 icons as specified in assignment
-   */
+  // Swap out the volume icon based on the current volume state, so you can tell if the volume is audible or muted just by looking at the icon.
   function updateVolumeIcon() {
     if (mediaElement.muted) {
       volumeIcon.src = iconPaths.volumeMute;
@@ -148,13 +117,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  /**
-   * WHAT: ORIGINAL FEATURE - Initialize speed controls
-   * WHY: Allows playback speed adjustment
-   * HOW: Setting playbackRate property
-   * CITATION: Event handling from week6/week6/blog.post/script.js
-   * SOURCES: HTMLMediaElement.playbackRate - MDN Web Docs
-   */
+  // This is a feature added by original to initialise the speed control,
+  //  which allows us to change the speed of the video playback,
+  //  like speeding it up or slowing it down.
   function initializeSpeedControls() {
     console.log("Setting up speed controls");
 
@@ -186,12 +151,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  /**
-   * WHAT: Event listener for volume slider
-   * WHY: Adjusts audio volume
-   * HOW: Updates volume property
-   * CITATION: From week7/videoscript.js
-   */
+  // Add an event listener to the volume slider, pull it to adjust the volume, and the sound will follow.
+
   volumeSlider.addEventListener("input", function () {
     mediaElement.volume = this.value;
     console.log(`Volume changed to ${this.value}`);
@@ -202,36 +163,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  /**
-   * WHAT: Play button event listener
-   * WHY: Starts playback on click
-   * HOW: Calls playMedia function
-   * CITATION: From week7/videoscript.js
-   */
+  // The event listener for the play button, the one that makes the video start when you click it.
   playButton.addEventListener("click", playMedia);
 
-  /**
-   * WHAT: Pause button event listener
-   * WHY: Pauses playback on click
-   * HOW: Calls pauseMedia function
-   * CITATION: From week7/videoscript.js
-   */
+  // An event listener for the pause button that stops the video when you press it,
+  //  so you can watch it again the next time it's played.
   pauseButton.addEventListener("click", pauseMedia);
 
-  /**
-   * WHAT: Mute button event listener
-   * WHY: Toggles audio muting
-   * HOW: Calls toggleMute function
-   * CITATION: From week6/week6/blog.post/script.js
-   */
+  // An event listener for the mute button that turns the sound off and on when you click it, like a mute switch.
   muteButton.addEventListener("click", toggleMute);
 
-  /**
-   * WHAT: Progress bar click listener
-   * WHY: Enables seeking to position
-   * HOW: Calculates click position
-   * CITATION: Click handling from week6/week6/blog.post/script.js
-   */
+  // This is a listener to tap on the progress bar to jump to a certain point in the video,
+  // so you can tap on that point if you want to watch it.
   document
     .querySelector(".progress-bar")
     .addEventListener("click", function (e) {
@@ -241,20 +184,11 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log(`Jumped to ${formatTime(mediaElement.currentTime)}`);
     });
 
-  /**
-   * WHAT: Timeupdate event listener
-   * WHY: Updates progress as video plays
-   * HOW: Calls updateProgressBar function
-   * CITATION: From week7/videoscript.js
-   */
+  // This is a timeupdate event listener that updates the progress bar while the video is playing so that the progress bar keeps moving to keep up with the video.
   mediaElement.addEventListener("timeupdate", updateProgressBar);
 
-  /**
-   * WHAT: Metadata loaded event
-   * WHY: Initializes UI when video loads
-   * HOW: Calls initialization functions
-   * CITATION: From week7/videoscript.js
-   */
+  // This is the event where the video's metadata is loaded, and it's used to get the UI ready at the beginning,
+  //  so that things like the time and the progress bar can be displayed first.
   mediaElement.addEventListener("loadedmetadata", function () {
     console.log("Video metadata loaded, duration:", mediaElement.duration);
 
@@ -265,12 +199,8 @@ document.addEventListener("DOMContentLoaded", function () {
     pauseButton.style.display = "none";
   });
 
-  /**
-   * WHAT: Video ended event
-   * WHY: Resets UI when video ends
-   * HOW: Calls pauseMedia function
-   * CITATION: From week7/videoscript.js
-   */
+  // This is the event after the video has finished playing, when it finishes playing,
+  //  reset the UI a bit, like the buttons and the progress bar will go back to the beginning.
   mediaElement.addEventListener("ended", function () {
     console.log("Video ended");
     pauseMedia();

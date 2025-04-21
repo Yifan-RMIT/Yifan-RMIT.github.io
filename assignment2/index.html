@@ -1,24 +1,38 @@
+<!-- This one is the HTML part, and the theme I chose is crafting videos.
+  Regarding the design, the page has the video, the title,
+  some controls (like play, pause, adjust the volume, watch the progress, whatever), 
+  and a function to adjust the playback speed, which is quite handy.
+   There's also a small area underneath that describes what the tutorial is about.
+    At the bottom is a note about the source of the video and icons. -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Crafting Tutorial Player</title>
-    <!-- Google Fonts -->
+    <!-- The fonts I used is from "Google Fonts" -->
+
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Open+Sans:wght@400;600&display=swap"
       rel="stylesheet"
     />
-    <!-- Custom stylesheet -->
+
     <link rel="stylesheet" href="style.css" />
+
     <script src="script.js" defer></script>
   </head>
+
   <body>
-    <!-- Main container for the crafting tutorial player -->
+    <!-- This is the main container for the content of the tutorial player  -->
+
     <main class="player-container">
       <h1 class="player-title">Craft Along: Step-by-Step</h1>
 
-      <!-- Media element for the tutorial video -->
+      <!-- This is the media element that holds the tutorial video and is used to play the video -->
+
       <div class="media-wrapper">
         <video
           id="media-element"
@@ -26,7 +40,7 @@
         ></video>
       </div>
 
-      <!-- Custom controls container -->
+      <!-- A container for the controls you made yourself, to hold the buttons. -->
       <div class="custom-controls">
         <button id="play-button" class="control-btn" aria-label="Play">
           <img src="assets/icons/play.png" alt="Play" class="icon" />
@@ -36,7 +50,7 @@
           <img src="assets/icons/pause.png" alt="Pause" class="icon" />
         </button>
 
-        <!-- Progress bar container -->
+        <!-- Container for the progress bar, that's where the progress bar is. -->
         <div class="progress-container">
           <div class="progress-bar">
             <div id="progress-fill"></div>
@@ -44,7 +58,7 @@
           <span id="time-display">0:00 / 0:00</span>
         </div>
 
-        <!-- Volume control -->
+        <!-- This is Volume control -->
         <div class="volume-control">
           <button id="mute-button" class="control-btn" aria-label="Mute">
             <img
@@ -54,6 +68,7 @@
               class="icon"
             />
           </button>
+
           <input
             type="range"
             id="volume-slider"
@@ -66,9 +81,10 @@
         </div>
       </div>
 
-      <!-- Playback Speed Control - Original Interactive Feature -->
+      <!-- The function to control playback speed is something that can be ordered by ORIGINAL. -->
       <div class="speed-control">
         <h3>Adjust Tutorial Speed</h3>
+
         <p class="feature-description">
           Need more time to follow along? Adjust the playback speed to match
           your pace.
@@ -76,8 +92,11 @@
 
         <div class="speed-buttons">
           <button class="speed-btn" data-speed="0.5">Slow (0.5x)</button>
+
           <button class="speed-btn active" data-speed="1">Normal (1x)</button>
+
           <button class="speed-btn" data-speed="1.5">Fast (1.5x)</button>
+
           <button class="speed-btn" data-speed="2">Very Fast (2x)</button>
         </div>
 
@@ -86,9 +105,10 @@
         </div>
       </div>
 
-      <!-- Tutorial information section -->
+      <!--  A section for tutorial information, such as the title and introduction. -->
       <div class="tutorial-info">
         <h3>About This Tutorial</h3>
+
         <p>
           Learn how to create a handheld windmill fan in this step-by-step
           crafting tutorial. Follow along at your own pace using the speed
@@ -97,9 +117,10 @@
       </div>
     </main>
 
-    <!-- Footer with attribution -->
+    <!-- The footer piece is for sources and authors -->
     <footer class="page-footer">
       <p>Video source: Berry Bunch - Handheld Windmill Fan Tutorial</p>
+
       <p>
         Icons provided by
         <a href="https://icons8.com" target="_blank">Icons8</a>

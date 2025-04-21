@@ -1,23 +1,30 @@
-/**
- * WHAT: CSS for crafting tutorial player
- * WHY: Makes the player look nice and fit the crafting theme
- * CITATION: Based on week5/weather/style.css
- */
-:root {
-  /* Colors */
-  --primary-color: #ff7f50; /* Orange */
-  --secondary-color: #4ecdc4; /* Teal */
-  --background-color: #faf7f2; /* Cream */
-  --text-color: #5d4037; /* Brown */
-  --control-color: #7d6e6a; /* Brown */
-  --progress-bg-color: #e5ded8; /* Light brown */
+/* This CSS code, is a secondary role. 
+The main goal is to make the page look neat and hierarchical, 
+and to give each part (like the player, buttons, progress bar, playback speed control area, etc.) 
+its own look. I've used :root to set some colour and spacing variables, so that it's easier to use them consistently later on. 
+The player as a whole is centred, with a white background, rounded corners and shadows, so it feels clean and simple.
+ The buttons can change colour when hovering, the progress bar can see the playback progress, 
+ and the playback speed button also has a click state change. There's also a responsive style, 
+ so that it's not too crowded when you look at it on a mobile phone, 
+ and it'll automatically turn into a top and bottom layout to adapt to the small screen. 
+ The overall idea is to make the functions work and the appearance more comfortable. */
 
-  /* Spacing */
+/* Set global colour and spacing variables, then use var() later to change the style uniformly */
+
+:root {
+  --primary-color: #ff7f50;
+  --secondary-color: #4ecdc4;
+  --background-color: #faf7f2;
+  --text-color: #5d4037;
+  --control-color: #7d6e6a;
+  --progress-bg-color: #e5ded8;
+
   --spacing-sm: 8px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
 }
 
+/* Set web fonts, background colours, text colours, remove default margins */
 body {
   font-family: "Open Sans", sans-serif;
   background-color: var(--background-color);

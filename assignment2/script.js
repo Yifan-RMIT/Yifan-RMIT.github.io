@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
     isPlaying = false;
     playButton.style.display = "flex";
     pauseButton.style.display = "none";
-    console.log("Video paused");
+    // console.log("Video paused");
   }
 
   /**
@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Add an event listener to the volume slider, pull it to adjust the volume, and the sound will follow.
 
-  volumeSlider.addEventListener("input", function () {
+  volumeSlider.addEventListener("input", () => {
     mediaElement.volume = this.value;
     console.log(`Volume changed to ${this.value}`);
 

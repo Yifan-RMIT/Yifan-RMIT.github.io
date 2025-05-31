@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Cell Biology Explorer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <h1>Interactive Cell Biology Explorer</h1>
+        <p class="subtitle">
+          Click on organelles to explore their biological functions
+        </p>
+        <p class="instructions">
+          Information stays visible so you can read it comfortably
+        </p>
+      </header>
+
+      <!-- Main content -->
+      <main class="main-content">
+        <!-- Cell visualization -->
+        <section class="cell-section">
+          <h2>Animal Eukaryotic Cell</h2>
+          <div class="canvas-container">
+            <canvas id="cell-canvas" width="800" height="600">
+              Your browser does not support the canvas element.
+            </canvas>
+          </div>
+          <div class="instructions-panel">
+            <p><strong>💡 How to use:</strong></p>
+            <ul>
+              <li>
+                <strong>Click any organelle</strong> to select it and view
+                information
+              </li>
+              <li>
+                <strong>Information stays visible</strong> so you can read it
+              </li>
+              <li>
+                <strong>Click another organelle</strong> to change selection
+              </li>
+              <li><strong>Click empty space</strong> to deselect</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Information panel -->
+        <section class="info-section">
+          <div class="info-panel">
+            <div class="selection-status">
+              <span id="selection-indicator">No organelle selected</span>
+            </div>
+
+            <h3 id="organelle-name">Animal Cell Explorer</h3>
+
+            <div class="info-content">
+              <div class="info-section-content">
+                <h4>Primary Function</h4>
+                <p id="organelle-function">
+                  Click on any organelle to discover its biological function and
+                  importance in cellular life.
+                </p>
+              </div>
+
+              <div class="info-section-content">
+                <h4>Biological Details</h4>
+                <p id="organelle-biology">
+                  Each organelle has specialized structures and functions that
+                  work together to maintain cellular life processes.
+                </p>
+              </div>
+
+              <div
+                id="clinical-section"
+                class="info-section-content"
+                style="display: none"
+              >
+                <h4>Clinical Relevance</h4>
+                <p id="organelle-clinical"></p>
+              </div>
+
+              <div
+                id="size-section"
+                class="info-section-content"
+                style="display: none"
+              >
+                <h4>Size & Structure</h4>
+                <p id="organelle-size"></p>
+              </div>
+            </div>
+
+            <div class="clear-selection">
+              <button id="clear-btn" style="display: none">
+                Clear Selection
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Sources -->
+      <footer class="footer">
+        <h4>Data Sources:</h4>
+        <ul>
+          <li>
+            <a
+              href="https://www.nagwa.com/en/videos/754179517901/"
+              target="_blank"
+              >Nagwa - Organelles of Eukaryotic Cells (Primary Reference)</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.ncbi.nlm.nih.gov/books/NBK554382/"
+              target="_blank"
+              >NCBI StatPearls - Histology, Cell (Khan YS, Farhana A, 2023)</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://kolypto.github.io/campbell-biology/chapters/06-Tour-of-the-Cell.html"
+              target="_blank"
+              >Campbell Biology - Chapter 6: A Tour of the Cell</a
+            >
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <!-- Organelle data -->
+    <script type="application/json" id="organelle-data">
+      {
+        "nucleus": {
+          "name": "Nucleus",
+          "x": 400,
+          "y": 300,
+          "radius": 50,
+          "color": "#2196F3",
+          "function": "Controls cell activities and contains genetic material (DNA). The nucleus is like the brain of the cell, directing all cellular processes.",
+          "biology": "Double membrane nuclear envelope with nuclear pores allows selective transport. Contains chromatin (DNA + histones) and nucleolus for ribosome synthesis. Site of DNA replication and transcription.",
+          "clinical": "Nuclear abnormalities are associated with cancer and genetic disorders. Many chemotherapy drugs target nuclear processes.",
+          "size": "5-10 micrometers diameter, typically 10-15% of cell volume"
+        },
+        "mitochondrion": {
+          "name": "Mitochondrion",
+          "x": 300,
+          "y": 200,
+          "radius": 30,
+          "color": "#FF9800",
+          "function": "Produces ATP through cellular respiration. This represents one of 100-1000 mitochondria found in typical animal cells, all working together as cellular power plants.",
+          "biology": "Double membrane organelle with cristae (folded inner membrane) for increased surface area. Contains its own DNA and reproduces independently through binary fission. Mitochondria move throughout the cell to areas of high energy demand.",
+          "clinical": "Mitochondrial dysfunction causes metabolic diseases, muscle weakness, and is linked to aging and neurodegenerative diseases. Inherited maternally through egg cells.",
+          "size": "1-10 micrometers length, 0.5-1 micrometers width, 100-1000 per cell"
+        },
+        "free_ribosome": {
+          "name": "Free Ribosome",
+          "x": 350,
+          "y": 380,
+          "radius": 10,
+          "color": "#795548",
+          "function": "Synthesizes proteins for use within the cytoplasm. Makes enzymes, structural proteins, and other proteins that function inside the cell.",
+          "biology": "Free-floating in the cytosol, not attached to membranes. Produces proteins like enzymes for glycolysis, cytoskeletal proteins, and transcription factors that remain in the cytoplasm.",
+          "clinical": "Dysfunction affects cellular metabolism and structure. Some genetic diseases result from defective cytoplasmic protein synthesis.",
+          "size": "20-30 nanometers diameter, millions distributed throughout cytoplasm"
+        },
+        "bound_ribosome": {
+          "name": "Bound Ribosome",
+          "x": 480,
+          "y": 250,
+          "radius": 10,
+          "color": "#8D6E63",
+          "function": "Synthesizes proteins for secretion, membrane insertion, or organelle targeting. Makes proteins that leave the cell or become part of membranes.",
+          "biology": "Attached to the rough endoplasmic reticulum surface. Produces secretory proteins like hormones, antibodies, digestive enzymes, and membrane proteins with signal sequences.",
+          "clinical": "Defects cause protein misfolding diseases and secretory disorders. Important target for antibiotics that disrupt protein export.",
+          "size": "20-30 nanometers diameter, attached to ER membranes in organized arrays"
+        },
+        "er": {
+          "name": "Endoplasmic Reticulum",
+          "x": 250,
+          "y": 350,
+          "radius": 24,
+          "color": "#9C27B0",
+          "function": "Synthesizes proteins (rough ER) and lipids (smooth ER). Acts as the cell's manufacturing and transport system.",
+          "biology": "Extensive membrane network continuous with nuclear envelope. Rough ER has ribosomes for protein synthesis. Smooth ER specializes in lipid synthesis and detoxification.",
+          "clinical": "ER stress is linked to diabetes, neurodegenerative diseases, and liver disorders. Many drugs are metabolized by smooth ER enzymes.",
+          "size": "Network extending throughout cytoplasm, 10-20% of cell volume"
+        },
+        "golgi": {
+          "name": "Golgi Apparatus",
+          "x": 550,
+          "y": 200,
+          "radius": 26,
+          "color": "#FF5722",
+          "function": "Modifies, packages, and ships proteins from the ER. Acts like the cell's post office and quality control center.",
+          "biology": "Stack of flattened membrane cisternae. Proteins enter at cis face, undergo glycosylation modifications, and exit at trans face in transport vesicles.",
+          "clinical": "Golgi dysfunction affects protein secretion and cellular communication. Important in immune system function and tissue development.",
+          "size": "3-5 micrometers across, typically 4-8 stacked cisternae"
+        },
+        "primary_lysosome": {
+          "name": "Primary Lysosome",
+          "x": 450,
+          "y": 150,
+          "radius": 18,
+          "color": "#E91E63",
+          "function": "Newly formed lysosome containing digestive enzymes. Ready to fuse with materials that need breakdown.",
+          "biology": "Fresh from Golgi apparatus, contains 60+ digestive enzymes in acidic environment (pH 4.5-5.0). Has not yet fused with target materials for digestion.",
+          "clinical": "Primary lysosome enzyme deficiencies cause lysosomal storage diseases like Tay-Sachs and Gaucher disease.",
+          "size": "0.1-1.2 micrometers diameter, smaller and uniform when newly formed"
+        },
+        "secondary_lysosome": {
+          "name": "Secondary Lysosome",
+          "x": 180,
+          "y": 280,
+          "radius": 15,
+          "color": "#C2185B",
+          "function": "Active digestive vesicle formed when primary lysosome fuses with material to be broken down. Currently digesting cellular waste.",
+          "biology": "Formed by fusion of primary lysosome with autophagosome or phagosome. Contains partially digested materials and active enzymes breaking down proteins, lipids, and organelles.",
+          "clinical": "Dysfunction leads to cellular aging and accumulation of toxic waste. Critical for immune system function and tissue remodeling.",
+          "size": "Variable size vesicles, larger when containing materials being digested"
+        },
+        "vacuole": {
+          "name": "Vacuoles",
+          "x": 180,
+          "y": 180,
+          "radius": 20,
+          "color": "#00BCD4",
+          "function": "Storage, transport, and pH regulation. Maintains cellular water balance and stores various materials.",
+          "biology": "Small and numerous in animal cells (larger in plants). Derived from ER and Golgi apparatus. Functions in water regulation and ion storage.",
+          "clinical": "Vacuolar dysfunction affects cellular homeostasis and can contribute to various metabolic disorders.",
+          "size": "Small and multiple in animal cells, larger and central in plant cells"
+        }
+      }
+    </script>
+
+    <script src="script.js"></script>
+  </body>
+</html>

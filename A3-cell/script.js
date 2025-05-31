@@ -1,11 +1,10 @@
 /**
  * CELL BIOLOGY EXPLORER - SIMPLIFIED JAVASCRIPT
- * Student-friendly version for RMIT Interactive Media A3
  * Focus: Core click interaction functionality without complexity
  */
 
 // ==============================================
-// GLOBAL VARIABLES - Simple and Clear
+// GLOBAL VARIABLES -
 // ==============================================
 
 let canvas;

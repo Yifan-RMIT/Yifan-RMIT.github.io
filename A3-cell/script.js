@@ -1,25 +1,23 @@
 /**
- * CELL BIOLOGY EXPLORER - SIMPLIFIED JAVASCRIPT
- * Focus: Core click interaction functionality without complexity
+ * This simplified JavaScript for the Cell Biology Explorer focuses on implementing core click‐based interactions without added complexity.
  */
 
-// ==============================================
-// GLOBAL VARIABLES -
-// ==============================================
+/**
+ * These global variables store essential references and data needed throughout the script to manage organelle interactions.
+ */
 
 let canvas;
 let ctx;
 let organelles = {};
 let selectedOrganelle = null;
 
-// DOM elements we'll need to update
 let organelleName, organelleFunction, organelleBiology;
 let organelleClinical, organelleSize;
 let clinicalSection, sizeSection, clearBtn;
 
-// ==============================================
-// MAIN INITIALIZATION - When Page Loads
-// ==============================================
+/**
+ * This section handles the main initialization when the page loads, setting up event listeners and preparing the application for user interaction.
+ */
 
 document.addEventListener("DOMContentLoaded", function () {
   console.log("🚀 Starting Cell Explorer...");
@@ -43,9 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("✅ Cell Explorer ready!");
 });
 
-// ==============================================
-// GET DOM ELEMENTS - Find Elements to Update
-// ==============================================
+/**
+ * In this part, we get references to the DOM elements that we will need to update later in the script.
+ */
 
 function setupDOMElements() {
   organelleName = document.getElementById("organelle-name");
@@ -58,9 +56,9 @@ function setupDOMElements() {
   clearBtn = document.getElementById("clear-btn");
 }
 
-// ==============================================
-// LOAD DATA - Get Organelle Information
-// ==============================================
+/**
+ * This section loads the organelle information from the embedded JSON data and prepares it for use in the application.
+ */
 
 function loadOrganelleData() {
   try {
@@ -75,9 +73,9 @@ function loadOrganelleData() {
   }
 }
 
-// ==============================================
-// EVENT SETUP - Handle User Interactions
-// ==============================================
+/**
+ * This part sets up event listeners to handle user clicks and other interactions.
+ */
 
 function setupEvents() {
   // Main interaction: Click on canvas
@@ -99,9 +97,10 @@ function setupEvents() {
   });
 }
 
-// ==============================================
-// MOUSE POSITION - Convert Click to Canvas Coordinates
-// ==============================================
+/**
+ * This section calculates the mouse click position relative to the canvas,
+ * converting screen coordinates into canvas coordinates for accurate interaction.
+ */
 
 function getMousePosition(event) {
   const rect = canvas.getBoundingClientRect();
@@ -114,9 +113,9 @@ function getMousePosition(event) {
   };
 }
 
-// ==============================================
-// CLICK HANDLING - Main Interaction Logic
-// ==============================================
+/**
+ * This section contains the main logic for handling clicks on the canvas, determining which organelle was clicked, and updating the displayed information.
+ */
 
 function handleCanvasClick(x, y) {
   console.log(`🖱️ Clicked at: (${Math.round(x)}, ${Math.round(y)})`);
@@ -133,9 +132,9 @@ function handleCanvasClick(x, y) {
   }
 }
 
-// ==============================================
-// ORGANELLE DETECTION - Find What Was Clicked
-// ==============================================
+/**
+ * This section handles detecting which organelle the user clicked on within the canvas.
+ */
 
 function findOrganelleAt(mouseX, mouseY) {
   // Check each organelle to see if the click was inside it
@@ -158,9 +157,9 @@ function findOrganelleAt(mouseX, mouseY) {
   return null;
 }
 
-// ==============================================
-// SELECTION SYSTEM - Show Organelle Information
-// ==============================================
+/**
+ * This part manages selecting an organelle and displaying its information in the info panel.
+ */
 
 function selectOrganelle(organelleData) {
   const { id, data } = organelleData;
@@ -202,10 +201,9 @@ function clearSelection() {
   // Hide the clear button
   clearBtn.style.display = "none";
 }
-
-// ==============================================
-// INFORMATION DISPLAY - Update Text Content
-// ==============================================
+/**
+ * This section updates the text in the information panel to show details for the selected organelle.
+ */
 
 function showOrganelleInfo(organelle) {
   console.log(`📖 Showing info for: ${organelle.name}`);
@@ -253,9 +251,9 @@ function showDefaultInfo() {
   sizeSection.style.display = "none";
 }
 
-// ==============================================
-// DRAWING FUNCTIONS - Visual Cell Representation
-// ==============================================
+/**
+ * This section defines functions that draw the cell and its organelles on the canvas to create the visual representation.
+ */
 
 function drawCell() {
   // Clear the canvas
@@ -381,10 +379,9 @@ function drawTitle() {
   ctx.fillStyle = "#4CAF50";
   ctx.fillText("Click organelles to explore their functions", 400, 580);
 }
-
-// ==============================================
-// UTILITY FUNCTIONS - Helper Functions
-// ==============================================
+/**
+ * This section includes utility functions that provide helper methods for common tasks used throughout the application.
+ */
 
 // Test function for debugging (call from browser console)
 function testSelect(organelleName) {

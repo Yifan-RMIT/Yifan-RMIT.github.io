@@ -1,3 +1,43 @@
+<!-- Why did I change the theme? -->
+<!-- At first, I wanted to continue with what I had been doing in class and create an
+interactive web diary. However, when I started researching it in detail, I
+realised that it would take five or six days to complete and that I didn't have
+enough knowledge to do it. So, I decided to switch to a different theme. -->
+
+<!-- I have a local friend who works as a web developer, so I sought his help. I
+happened to see the cell structure in his middle school textbook. After some
+thought, I decided that I could use this as a theme to create a science
+education website to showcase the structure of cells, thereby helping students
+better understand cells. -->
+<!-- 
+The core content is roughly as follows: Eukaryotic cells carry out life
+activities through the coordinated action of various organelles: The cell
+membrane is composed of a phospholipid bilayer and proteins, controlling the
+entry and exit of substances and defining the cell boundary; the cell nucleus is
+enclosed by a double membrane, regulating DNA expression and directing cell
+behaviour through nuclear pores, while the nucleolus is responsible for ribosome
+synthesis; the cytoplasm contains water, proteins, ions, etc., serving as the
+suspension medium for other organelles; the cytoskeleton is composed of
+microfilaments, microtubules, and intermediate filaments, maintaining shape and
+guiding organelle movement; mitochondria have inner and outer membranes,
+providing energy through aerobic respiration and containing their own DNA;
+ribosomes are composed of rRNA and proteins, responsible for protein synthesis;
+the endoplasmic reticulum is divided into rough (protein folding) and smooth
+(lipid synthesis) types; the Golgi apparatus is composed of stacked flat
+membrane vesicles, packaging proteins and generating lysosomes for degradation
+and recycling of waste; vacuoles are used for storing substances. Plant cells
+additionally have a cell wall for support, chloroplasts for photosynthesis, and
+a large central vacuole to maintain turgor pressure. The types and quantities of
+organelles vary depending on the cell's function.  -->
+
+<!-- Then, this webpage basically visualises the written content. Each structure on
+the cell can be viewed by clicking on it, and after clicking, a corresponding
+functional introduction will appear below. -->
+
+<!-- Declaration: For some of the web page code, I sought the help of a professional
+web developer, and for some of the errors, I used ChatGPT to help me correct and
+modify them. -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,7 +48,6 @@
   </head>
   <body>
     <div class="container">
-      <!-- Header -->
       <header class="header">
         <h1>Interactive Cell Biology Explorer</h1>
         <p class="subtitle">
@@ -45,7 +84,6 @@
           </div>
         </section>
 
-        <!-- Information panel -->
         <section class="info-section">
           <div class="info-panel">
             <div class="selection-status">
@@ -99,7 +137,6 @@
         </section>
       </main>
 
-      <!-- Sources -->
       <footer class="footer">
         <h4>Data Sources:</h4>
         <ul>
@@ -128,7 +165,6 @@
       </footer>
     </div>
 
-    <!-- Organelle data -->
     <script type="application/json" id="organelle-data">
       {
         "nucleus": {
